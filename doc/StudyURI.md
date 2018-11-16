@@ -20,7 +20,7 @@ A Study URI is comprised of three components. The Global Namespace, Resource Typ
 
 `https://data.pharma.abc/clinicaltrial/D3562C00096`
 
-![](images\StudyUriComponents.png)
+![](https://github.com/phuse-org/LinkedDataEducation/blob/master/doc/images/StudyURIComponents.png)
 
 ###Details
 
