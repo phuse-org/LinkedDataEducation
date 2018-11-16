@@ -1,7 +1,7 @@
 # Study URI
 This is a working draft for developing a guide to creating Uniforml Resource 
 Identifiers (URIs) for clinical studies/trials. The work was inspired by the 
-PhUSE EUConnect18 paper "Study URI" [LINK WHEN AVAILABLE] by Kerstin Forsberg
+PhUSE EUConnect18 paper "Study URI" [[Paper]](http://www.phusewiki.org/docs/Frankfut%20Connect%202018/TT/Papers/TT10-tt09-study-uri-19746.pdf) [[Presentation]](http://www.phusewiki.org/docs/Frankfut%20Connect%202018/TT/Presentations/TT10-tt09-study-uri-pub-19747.pdf) by Kerstin Forsberg
 and Daniel Goude, with follow up discussions including Johannes Ulander and 
 Tim Williams. These recommendations are under development and subject to change.
 

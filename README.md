@@ -3,4 +3,4 @@ Education Materials for Linked Data
 
 Current Work:
 
-/doc/StudyURI.md
+[Study URI](./doc/StudyURI.md)
