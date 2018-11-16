@@ -18,7 +18,7 @@ tim.williams@phuse.eu
 ## Proposed Structure
 A Study URI is comprised of three components. The Global Namespace, Resource Type, and Trial ID.
 
-![](images/StudyUriComponents.png)
+![](./images/StudyUriComponents.png)
 
 ###Details
 
