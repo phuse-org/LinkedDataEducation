@@ -5,12 +5,7 @@ PhUSE EUConnect18 paper "Study URI" [[Paper]](http://www.phusewiki.org/docs/Fran
 and Daniel Goude, with follow up discussions including Johannes Ulander and 
 Tim Williams. These recommendations are under development and subject to change.
 
-Please submit your feedback by branching the Github repository or sending your 
-comments to:
-
-tim.williams@phuse.eu
-
-[ADD YOUR EMAILS HERE IF YOU WISH TO BE CONTACTED]
+You may contribute to this project by  branching the Github repository. Please send comments and feedback by raising a Github issue. 
 
 ## Background
 [KF or DG: PLEASE ADD CONTENT HERE,  some of which can come from your paper. Use generic terms to describe why a URI is needed]
@@ -26,7 +21,7 @@ A Study URI is comprised of three components. The Global Namespace, Resource Typ
 
 **1. Global Namespace**  `https://data.pharma.abc`
 
-[DESCRIBE HOW TO SPECIFY, IMPLICATIONS FOR DEREFERENCING]
+[DESCRIBE HOW TO SPECIFY  (implications for derefencing is covered below)]
 
 **2. Resource type**  `clinicaltrial`
 
@@ -42,9 +37,6 @@ Choice 1: Is the clinical trials.gov ID available for the drug?
 
 Choice 2: A combo of internal ID's [?  ADD RECOMMENDATIONS]
 
-Choice 3: [??]
-
-[FLOWCHART WILL BE ADDED]
 
 ## Derefencing Guidance
 [INTERNAL AND EXTERNAL....]
