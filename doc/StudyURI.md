@@ -1,17 +1,18 @@
 # Study URI
-This is a working draft for developing a guide to creating Uniforml Resource 
-Identifiers (URIs) for clinical studies/trials. The work was inspired by the 
+This is a working draft for developing a guide to creating Uniform Resource
+Identifiers (URIs) for clinical studies/trials. The work was inspired by the
 PhUSE EUConnect18 paper "Study URI" [[Paper]](http://www.phusewiki.org/docs/Frankfut%20Connect%202018/TT/Papers/TT10-tt09-study-uri-19746.pdf) [[Presentation]](http://www.phusewiki.org/docs/Frankfut%20Connect%202018/TT/Presentations/TT10-tt09-study-uri-pub-19747.pdf) by Kerstin Forsberg
-and Daniel Goude, with follow up discussions including Johannes Ulander and 
+and Daniel Goude, with follow up discussions including Johannes Ulander and
 Tim Williams. These recommendations are under development and subject to change.
 
-You may contribute to this project by  branching the Github repository. Please send comments and feedback by raising a Github issue. 
+You may contribute to this project by  branching the Github repository. Please
+send comments and feedback by raising a Github issue.
 
 ## Background
 A fundamental problem when referencing studies and when integrating information
 on clinical studies is that we use synonyms (codes, numbers, acronyms) for the
-same study. For example: D3562C00096, 4522IL/0096, NCT00240331, 2004-001741-15
-and AURORA all refer to the same study. To understand that we are referring to
+same study. For example: `D3562C00096`, `4522IL/0096`, `NCT00240331`, `2004-001741-15`
+and `AURORA` all refer to the same study. To understand that we are referring to
 the same study, there is a need to cross match the same study across different
 systems, often with different free text field for study codes and acronyms.
 
@@ -49,15 +50,15 @@ A Study URI is comprised of three components. The Global Namespace, Resource Typ
 
 **3. Trial ID**   `D3562C00096`
 
-The first choice for the Trial ID component is the NCT ID from ClinicalTrials.gov.  
+The first choice for the Trial ID component is the NCT ID from ClinicalTrials.gov.
 
 Choice 1: Is the clinical trials.gov ID available for the drug?
 
- [ADD LINK AND INSTRUCTIONS ON HOW TO FIND OUT]  
+ [ADD LINK AND INSTRUCTIONS ON HOW TO FIND OUT]
 
 Choice 2: A combo of internal ID's [?  ADD RECOMMENDATIONS]
 
 
 ## Derefencing Guidance
 [INTERNAL AND EXTERNAL....]
- 
+
