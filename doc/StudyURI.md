@@ -42,11 +42,11 @@ A Study URI is comprised of three components. The Global Namespace, Resource Typ
 
 **1. Global Namespace**  `https://data.pharma.abc`
 
-[DESCRIBE HOW TO SPECIFY  (implications for derefencing is covered below)]
+[To add: How to specify. Implications for derefencing will be described below]
 
 **2. Resource type**  `clinicaltrial`
 
-[EXPLAIN CHOICE AND ONTOLOGY CONSIDERATION]
+[To add: why "clinicialtria', ontology considerations, and other possible resource types]
 
 **3. Trial ID**   `D3562C00096`
 
@@ -54,11 +54,15 @@ The first choice for the Trial ID component is the NCT ID from ClinicalTrials.go
 
 Choice 1: Is the clinical trials.gov ID available for the drug?
 
- [ADD LINK AND INSTRUCTIONS ON HOW TO FIND OUT]
+ [To add: Instructions for how to search ct.gov for this information]
 
-Choice 2: A combo of internal ID's [?  ADD RECOMMENDATIONS]
+Choice 2: A combo of internal ID's 
+[To add: Generic recommendations for internal IDS, how to update when NCT ID becomes available]
 
 
 ## Derefencing Guidance
-[INTERNAL AND EXTERNAL....]
+[To add: Implications for internal and external de-referencing]
 
+
+## Additional Triples
+[To add: The minimal recommended relations attached to Study URI]
