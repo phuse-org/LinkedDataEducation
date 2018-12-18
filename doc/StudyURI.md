@@ -46,7 +46,7 @@ A Study URI is comprised of three components. The Global Namespace, Resource Typ
 
 **2. Resource type**  `clinicaltrial`
 
-[To add: why "clinicialtria', ontology considerations, and other possible resource types]
+[To add: why "clinicialtrial', ontology considerations, and other possible resource types]
 
 **3. Trial ID**   `D3562C00096`
 
@@ -66,3 +66,12 @@ Choice 2: A combo of internal ID's
 
 ## Additional Triples
 [To add: The minimal recommended relations attached to Study URI]
+
+
+## Contributors
+Kerstin Forsberg
+Daniel Goude
+Nolan Nichols
+Johannes Ulander
+Tim Williams
+
