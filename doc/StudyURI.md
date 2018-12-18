@@ -70,8 +70,12 @@ Choice 2: A combo of internal ID's
 
 ## Contributors
 Kerstin Forsberg
+
 Daniel Goude
+
 Nolan Nichols
+
 Johannes Ulander
+
 Tim Williams
 
