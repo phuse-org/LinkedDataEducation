@@ -31,6 +31,10 @@ used by sponsors. Some of the study codes are a consequence of different code
 standards. Different code standards can be seen as a representation of the
 history of the investigated medical product and of the sponsor company.
 
+(ADD information from CoolURIs that fit the proposed approach)
+https://www.w3.org/TR/cooluris/
+
+
 ## Proposed Structure
 A Study URI is comprised of three components. The Global Namespace, Resource Type, and Trial ID.
 
@@ -46,7 +50,7 @@ A Study URI is comprised of three components. The Global Namespace, Resource Typ
 
 **2. Resource type**  `clinicaltrial`
 
-[To add: why "clinicialtria', ontology considerations, and other possible resource types]
+[To add: why "clinicialtrial', ontology considerations, and other possible resource types]
 
 **3. Trial ID**   `D3562C00096`
 
@@ -64,5 +68,35 @@ Choice 2: A combo of internal ID's
 [To add: Implications for internal and external de-referencing]
 
 
-## Additional Triples
-[To add: The minimal recommended relations attached to Study URI]
+## Recommended Predicates
+(Change this to a table and describe each, with suggestions for recommended, mandatory, optional)
+
+
+| Predicate     | Description   |
+| ------------- |:-------------:|
+| hasNCTID      |  |
+| hasCompanyID  |  |
+| hasAcronym    |  |
+| hasEuroCTID   |  | 
+
+(To Add: prefLabel, description....?)
+
+
+## Examples
+(triples illustrating the most common implementations : use of NCTIID, use prior to NCTID, etc.)
+
+## Evolution (?)
+How to manage the URI as the study evolves from not havning NCTID to having one, etc.
+
+## Use Cases
+(Advantages, linking to other information. Can be a separate page)
+
+## References
+[Cool URIs for the Semantic Web](https://www.w3.org/TR/cooluris/)
+
+## Contributors
+    - Kerstin Forsberg
+    - Daniel Goude
+    - Nolan Nichols
+    - Johannes Ulander
+    - Tim Williams
