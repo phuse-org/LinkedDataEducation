@@ -83,15 +83,13 @@ Choice 2: A combo of internal ID's
 
 
 ## Examples
-(triples illustrating the 
-
+(triples illustrating the most common implementations : use of NCTIID, use prior to NCTID, etc.)
 
 ## Evolution (?)
 How to manage the URI as the study evolves from not havning NCTID to having one, etc.
 
 ## Use Cases
 (Advantages, linking to other information. Can be a separate page)
-
 
 ## References
 [Cool URIs for the Semantic Web](https://www.w3.org/TR/cooluris/)
@@ -102,4 +100,3 @@ How to manage the URI as the study evolves from not havning NCTID to having one,
     - Nolan Nichols
     - Johannes Ulander
     - Tim Williams
-
