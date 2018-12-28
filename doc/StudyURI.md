@@ -69,9 +69,6 @@ Choice 2: A combo of internal ID's
 
 
 ## Recommended Predicates
-(Change this to a table and describe each, with suggestions for recommended, mandatory, optional)
-
-
 | Predicate     | Description   |
 | ------------- |:-------------:|
 | hasNCTID      |  |
@@ -79,20 +76,20 @@ Choice 2: A combo of internal ID's
 | hasAcronym    |  |
 | hasEuroCTID   |  | 
 
-(To Add: prefLabel, description....?)
-
+(To Add: prefLabel, description, recommended/mandatory/optional,  etc.)
 
 ## Examples
-(triples illustrating the most common implementations : use of NCTIID, use prior to NCTID, etc.)
+(Triples illustrating the most common implementations : use of NCTIID, use prior to NCTID, etc.)
 
 ## Evolution (?)
-How to manage the URI as the study evolves from not havning NCTID to having one, etc.
+How to manage the URI as the study evolves from not having NCTID to having one, etc.
 
 ## Use Cases
-(Advantages, linking to other information. Can be a separate page)
+(Advantages, linking to other information. May link to separate pages)
 
 ## References
 [Cool URIs for the Semantic Web](https://www.w3.org/TR/cooluris/)
+Study URI" [[Paper]](http://www.phusewiki.org/docs/Frankfut%20Connect%202018/TT/Papers/TT10-tt09-study-uri-19746.pdf) [[Presentation]](http://www.phusewiki.org/docs/Frankfut%20Connect%202018/TT/Presentations/TT10-tt09-study-uri-pub-19747.pdf)
 
 ## Contributors
     - Kerstin Forsberg
