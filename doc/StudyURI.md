@@ -8,6 +8,8 @@ Tim Williams. These recommendations are under development and subject to change.
 You may contribute to this project by  branching the Github repository. Please
 send comments and feedback by raising a Github issue.
 
+[[Discussion of active questions]](StudyURI-questions.md)  (development team)
+
 ## Background
 A fundamental problem when referencing studies and when integrating information
 on clinical studies is that we use synonyms (codes, numbers, acronyms) for the
