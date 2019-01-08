@@ -7,8 +7,8 @@ or clone the repository as needed.
 
 ## Questions
 
-**Question**: *What is needed to ensure that a URI resolves differently when on the internal company network
-vs external (public) browsing? *
+**Question**: **What is needed to ensure that a URI resolves differently when on the internal company network
+vs external (public) browsing?**
 
 The de-refernced public URI must only provide publicly available information,
 while the interal deferencing yields company confidential information in addition to the public content.
