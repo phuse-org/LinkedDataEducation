@@ -11,7 +11,7 @@ or clone the repository as needed.
 vs external (public) browsing?**
 
 The de-refernced public URI must only provide publicly available information,
-while the interal deferencing yields company confidential information in addition to the public content.
+while the internal deferencing yields company confidential information in addition to the public content.
 
 Ideally, a single URI deferences differently based on context (internal vs external).
 
