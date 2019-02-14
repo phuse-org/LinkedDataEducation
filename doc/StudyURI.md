@@ -10,7 +10,11 @@ send comments and feedback by raising a Github issue.
 
 [[Discussion of active questions]](StudyURI-questions.md)  (development team)
 
-## Background
+
+## Problem Statement
+* Multiple repositories
+
+### Inconsisent synonyms
 A fundamental problem when referencing studies and when integrating information
 on clinical studies is that we use synonyms (codes, numbers, acronyms) for the
 same study. For example: `D3562C00096`, `4522IL/0096`, `NCT00240331`, `2004-001741-15`
@@ -18,6 +22,7 @@ and `AURORA` all refer to the same study. To understand that we are referring to
 the same study, there is a need to cross match the same study across different
 systems, often with different free text field for study codes and acronyms.
 
+restructure this:
 One use case is the lookup of study codes and acronyms to identify studies in
 public data request portals such as https://www.clinicalstudydatarequest.com
 and https://astrazenecagroup-dt.pharmacm.com  Clinical studies are key entities
@@ -36,35 +41,21 @@ history of the investigated medical product and of the sponsor company.
 (ADD information from CoolURIs that fit the proposed approach)
 https://www.w3.org/TR/cooluris/
 
+## Proposed Solution
+* A single identifier for a study that does not change over time and serves as a link between
+various online repositories, internal and external information about the study. 
 
 ## Proposed Structure
-A Study URI is comprised of three components. The Global Namespace, Resource Type, and Trial ID.
 
-`https://data.pharma.abc/clinicaltrial/D3562C00096`
 
-![](https://github.com/phuse-org/LinkedDataEducation/blob/master/doc/images/StudyURIComponents.png)
+## Parent URI
 
-### Details
+### External URI  (.com)
 
-**1. Global Namespace**  `https://data.pharma.abc`
+`https://data.pharma.com/clinicaltrial/D3562C00096`
 
-[To add: How to specify. Implications for derefencing will be described below]
-
-**2. Resource type**  `clinicaltrial`
-
-[To add: why "clinicialtrial', ontology considerations, and other possible resource types]
-
-**3. Trial ID**   `D3562C00096`
-
-The first choice for the Trial ID component is the NCT ID from ClinicalTrials.gov.
-
-Choice 1: Is the clinical trials.gov ID available for the drug?
-
- [To add: Instructions for how to search ct.gov for this information]
-
-Choice 2: A combo of internal ID's 
-[To add: Generic recommendations for internal IDS, how to update when NCT ID becomes available]
-
+###  Internal URI (.net)
+`https://data.pharma.net/clinicaltrial/D3562C00096`
 
 ## Derefencing Guidance
 [To add: Implications for internal and external de-referencing]
