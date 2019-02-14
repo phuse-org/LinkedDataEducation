@@ -93,7 +93,7 @@ studyURIHash
 ```
 
 ## Form the Study URI
-The study URI is composed of 3 components:  A *Namespace*, *Resource Type*, and the *UUID*.
+The study URI is composed of 3 components:  A **Namespace**, **Resource Type**, and the **UUID**.
 If ClinicalTrials.gov were to be the hosting respository, URI for our example study could be:
 
 `https://ct.gov/clinicaltrial#e92971d5421dd4e83ed3e6f6bcc6cf0bd3538d2a`
@@ -111,13 +111,13 @@ In this example both the Namspace and Resource Type changed, but the study id re
 
 ## URI for Company Internal and External resolution
 
-This example shows how a company's identifier for the trial could be used for external and internal websites.
+This example shows how a company's identifier (ALZ-XAN-0005)for the trial could be used for external and internal websites.
 External facing addresses could use .com and resolve publically available information about the study. the .net address could be used to link to company-confidential information behind the company firewall.
 
 
-`https://data.abcPharma.com/clinicaltrial/D3562C00096`
+`https://data.abcPharma.com/clinicaltrial/ALZ-XAN-0005`
 
-`https://data.abcPharma.net/clinicaltrial/D3562C00096`
+`https://data.abcPharma.net/clinicaltrial/ALZ-XAN-0005`
 
 
 The following triples tie the information together:
