@@ -1,29 +1,32 @@
 # Study URI
-This is a working draft for developing a guide to creating Uniform Resource
-Identifiers (URIs) for clinical studies/trials. The work was inspired by the
+This is a working draft propsoal for creation, management, and use of Uniform Resource
+Identifiers (URIs) for clinical trial identification. The work was inspired by the
 PhUSE EUConnect18 paper "Study URI" [[Paper]](http://www.phusewiki.org/docs/Frankfut%20Connect%202018/TT/Papers/TT10-tt09-study-uri-19746.pdf) [[Presentation]](http://www.phusewiki.org/docs/Frankfut%20Connect%202018/TT/Presentations/TT10-tt09-study-uri-pub-19747.pdf) by Kerstin Forsberg
 and Daniel Goude, with follow up discussions including Johannes Ulander and
 Tim Williams. These recommendations are under development and subject to change.
 
-You may contribute to this project by  branching the Github repository. Please
+You may contribute to this project by branching the Github repository. Please
 send comments and feedback by raising a Github issue.
 
-[[Discussion of active questions]](StudyURI-questions.md)  (development team)
+[[Discussion of active questions]](StudyURI-questions.md)
 
 
 ## Problem Statement
+The proposal addresses multiple challenges surrounding clinical trial identifiers. The concept
+of a unique identifier for a clinical trials is not new, but implementations are inconsistent 
+and subject to change over time. 
+
 * Multiple repositories
+Information about trials is available in mutliiple repsoitories [TODO: ADD links]. There is no
+consistent way to bring this information together.
 
-### Inconsisent synonyms
-A fundamental problem when referencing studies and when integrating information
-on clinical studies is that we use synonyms (codes, numbers, acronyms) for the
-same study. For example: `D3562C00096`, `4522IL/0096`, `NCT00240331`, `2004-001741-15`
-and `AURORA` all refer to the same study. To understand that we are referring to
-the same study, there is a need to cross match the same study across different
-systems, often with different free text field for study codes and acronyms.
 
-restructure this:
-One use case is the lookup of study codes and acronyms to identify studies in
+* Inconsisent synonyms
+Mutliple synonyms (codes, numbers, acronyms) are used for the same trial. For example: `D3562C00096`, `4522IL/0096`, `NCT00240331`, `2004-001741-15`and `AURORA` all refer to the same study. Data must be 
+merged from different systems that use these acronyms, often relying in free text fields for study codes and acronyms.
+
+* Difficulty with Lookups
+Multiple, inconsistent acronyms and synonyms complicate obtaining information from 
 public data request portals such as https://www.clinicalstudydatarequest.com
 and https://astrazenecagroup-dt.pharmacm.com  Clinical studies are key entities
 over time, as study data can be of renewed interest in collaborative research
@@ -38,30 +41,98 @@ used by sponsors. Some of the study codes are a consequence of different code
 standards. Different code standards can be seen as a representation of the
 history of the investigated medical product and of the sponsor company.
 
-(ADD information from CoolURIs that fit the proposed approach)
+[TODO: Are there concepts to be used from CoolURIs, or is it misleading]
 https://www.w3.org/TR/cooluris/
 
-## Proposed Solution
+# Proposed Solution
 * A single identifier for a study that does not change over time and serves as a link between
 various online repositories, internal and external information about the study. 
+This single identifier:
+* Provides the basis for linking to existing identifiers in  online and internal systems.
+* Is immutable
+* Is machine-readable, without human-interpretable meaning (which is open to interperation and change)
+* Links to human-interpretable identifiers and metadata
 
-## Proposed Structure
-
+# Proposed Structure
 
 ## Parent URI
+The URI contains an unique, machine readable value (UUID) that is stable over time. It can be recreated based on known data fed into the hashing algorithm (ie, it is not a randomly generated UUID or UUID based on a changing timestamp). The known date is the title on the study protocol (on the date that the UUID is generated) and the date in format YYYY-MM-DD.
 
-### External URI  (.com)
+## Create the Study UUID
+This example uses a study donated to the PhUSE organization. The study title is strippled of all white space, combined with the date the UUID is created, and hashed using the SHA1 algorithm. Spaces are removed due to potential variability in leading and trailing whitespace as well as inconsistent spacing between words. 
 
-`https://data.pharma.com/clinicaltrial/D3562C00096`
+1.  Study title:
+`Safety and Efficacy of the Xanomeline Transdermal Therapeutic System (TTS) in Patients with Mild to Moderate Alzheimer's Disease`
 
-###  Internal URI (.net)
-`https://data.pharma.net/clinicaltrial/D3562C00096`
+2. Study title with no spaces:
+`SafetyandEfficacyoftheXanomelineTransdermalTherapeutic\nSystem(TTS)inPatientswithMildtoModerateAlzheimer'sDisease"`
 
-## Derefencing Guidance
-[To add: Implications for internal and external de-referencing]
+3. Todays date in YYYY-MM-DD format:
+`2019-02-14`
+4. Study title appended with date:
+`SafetyandEfficacyoftheXanomelineTransdermalTherapeutic\nSystem(TTS)inPatientswithMildtoModerateAlzheimer'sDisease2019-02-14`
+5. Create SHA-1 hash of the title+date:
+`e92971d5421dd4e83ed3e6f6bcc6cf0bd3538d2a`
 
+Example R Code for steps 1 through 5:
+```
+library(digest)
+
+protocolTitle <-"Safety and Efficacy of the Xanomeline Transdermal Therapeutic 
+  System (TTS) in Patients with Mild to Moderate Alzheimer's Disease"
+
+protocolTitle_nws <- gsub(" ","", protocolTitle)
+
+dateToday <- '2019-02-14'
+
+protocolTitleDate_nws <- paste0(protocolTitle_nws, dateToday)
+
+studyURIHash <- sha1(protocolTitleDate_nws)
+
+studyURIHash
+```
+
+## Form the Study URI
+The study URI is composed of 3 components:  A *Namespace*, *Resource Type*, and the *UUID*.
+If ClinicalTrials.gov were to be the hosting respository, URI for our example study could be:
+
+`https://ct.gov/clinicaltrial#e92971d5421dd4e83ed3e6f6bcc6cf0bd3538d2a`
+
+Where:
+
+* ct.gov is the Namespace
+* clinicaltrial# is the Resource Type
+* the hash value is the UUID for the study.
+
+If another organization like the FDA were to host information about the same study, the URI could be formed as:
+`https://fda.gov/study#e92971d5421dd4e83ed3e6f6bcc6cf0bd3538d2a`
+
+In this example both the Namspace and Resource Type changed, but the study id remains stable.
+
+## URI for Company Internal and External resolution
+
+This example shows how a company's identifier for the trial could be used for external and internal websites.
+External facing addresses could use .com and resolve publically available information about the study. the .net address could be used to link to company-confidential information behind the company firewall.
+
+
+`https://data.abcPharma.com/clinicaltrial/D3562C00096`
+
+`https://data.abcPharma.net/clinicaltrial/D3562C00096`
+
+
+The following triples tie the information together:
+
+```
+https://ct.gov/clinicaltrial#e92971d5421dd4e83ed3e6f6bcc6cf0bd3538d2a
+   eg:hasUUID         "e92971d5421dd4e83ed3e6f6bcc6cf0bd3538d2a"^^xsd:string;
+   eg:hasCompanyIntURI  https://data.abcPharma.com/clinicaltrial/ALZ-XAN-0005 ;
+   eg:hasCompanyExtURI  https://data.abcPharma.net/clinicaltrial/ALZ-XAN-0005 ;
+.
+```
 
 ## Recommended Predicates
+TODO: Develop a list of recommended predicates.
+
 | Predicate     | Description   |
 | ------------- |:-------------:|
 | hasNCTID      |  |
@@ -72,13 +143,13 @@ various online repositories, internal and external information about the study.
 (To Add: prefLabel, description, recommended/mandatory/optional,  etc.)
 
 ## Examples
-(Triples illustrating the most common implementations : use of NCTIID, use prior to NCTID, etc.)
 
-## Evolution (?)
-How to manage the URI as the study evolves from not having NCTID to having one, etc.
 
 ## Use Cases
 (Advantages, linking to other information. May link to separate pages)
+
+## Governance
+A central organization is needed to create study URIs, ensure their uniqueness, and make then available. A logical choice would be [[ClinicalTrials.gov]](https://clinicaltrials.gov) . 
 
 ## References
 [Cool URIs for the Semantic Web](https://www.w3.org/TR/cooluris/)
