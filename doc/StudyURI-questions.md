@@ -40,6 +40,5 @@ blank nodes give me anxiety. :(   - TW
 
 **Answer**:
 
-Changed to repoAuthority.org
 
 
