@@ -10,22 +10,24 @@ send comments and feedback by raising a Github issue.
 
 [[Discussion of active questions]](StudyURI-questions.md)
 
-
 ## Problem Statement
 The proposal addresses multiple challenges surrounding clinical trial identifiers. The concept
 of a unique identifier for a clinical trials is not new, but implementations are inconsistent 
 and subject to change over time. 
 
 * Multiple repositories
+
 Information about trials is available in mutliiple repsoitories [TODO: ADD links]. There is no
 consistent way to bring this information together.
 
 
 * Inconsisent synonyms
+
 Mutliple synonyms (codes, numbers, acronyms) are used for the same trial. For example: `D3562C00096`, `4522IL/0096`, `NCT00240331`, `2004-001741-15`and `AURORA` all refer to the same study. Data must be 
 merged from different systems that use these acronyms, often relying in free text fields for study codes and acronyms.
 
 * Difficulty with Lookups
+
 Multiple, inconsistent acronyms and synonyms complicate obtaining information from 
 public data request portals such as https://www.clinicalstudydatarequest.com
 and https://astrazenecagroup-dt.pharmacm.com  Clinical studies are key entities
@@ -56,7 +58,7 @@ This single identifier:
 # Proposed Structure
 
 ## Parent URI
-The URI contains an unique, machine readable value (UUID) that is stable over time. It can be recreated based on known data fed into the hashing algorithm (ie, it is not a randomly generated UUID or UUID based on a changing timestamp). The known date is the title on the study protocol (on the date that the UUID is generated) and the date in format YYYY-MM-DD.
+The URI contains an unique, machine readable value (UUID) that is stable over time. It can be recreated based on known data provided to the hashing algorithm (ie, it is not a randomly generated UUID or UUID based on a changing timestamp). The known date is the title on the study protocol (on the date that the UUID is generated) and the date in format YYYY-MM-DD.
 
 ## Create the Study UUID
 This example uses a study donated to the PhUSE organization. The study title is strippled of all white space, combined with the date the UUID is created, and hashed using the SHA1 algorithm. Spaces are removed due to potential variability in leading and trailing whitespace as well as inconsistent spacing between words. 
@@ -92,20 +94,62 @@ studyURIHash <- sha1(protocolTitleDate_nws)
 studyURIHash
 ```
 
+# Alternate method for Discussion:
+## Reversible encoding. Eg: base64
+
+Original:
+
+`Safety and Efficacy of the Xanomeline Transdermal Therapeutic System (TTS) in Patients with Mild to Moderate Alzheimer's Disease`
+
+Value to encode
+
+`SafetyandEfficacyoftheXanomelineTransdermalTherapeutic\nSystem(TTS)inPatientswithMildtoModerateAlzheimer'sDisease2019-02-1`
+
+base64 encoded:
+
+`U2FmZXR5YW5kRWZmaWNhY3lvZnRoZVhhbm9tZWxpbmVUcmFuc2Rlcm1hbFRoZXJhcGV1dGljClN5c3RlbShUVFMpaW5QYXRpZW50c3dpdGhNaWxkdG9Nb2RlcmF0ZUFsemhlaW1lcidzRGlzZWFzZTIwMTktMDItMTQ=`
+
+Decoded:
+`SafetyandEfficacyoftheXanomelineTransdermalTherapeutic\nSystem(TTS)inPatientswithMildtoModerateAlzheimer'sDisease2019-02-1`
+
+
+```
+library(RCurl)
+
+protocolTitle <-"Safety and Efficacy of the Xanomeline Transdermal Therapeutic 
+  System (TTS) in Patients with Mild to Moderate Alzheimer's Disease"
+
+protocolTitle_nws <- gsub(" ","", protocolTitle)
+
+dateToday <- '2019-02-14'
+
+protocolTitleDate_nws <- paste0(protocolTitle_nws, dateToday)
+
+protocolTitleDate_nws 
+
+# Encode a UUID 
+dev_UUID <- base64(protocolTitleDate_nws)
+dev_UUID
+
+decoded_UUID <- base64Decode(dev_UUID)
+decoded_UUID
+```
+
+
 ## Form the Study URI
 The study URI is composed of 3 components:  A **Namespace**, **Resource Type**, and the **UUID**.
-If ClinicalTrials.gov were to be the hosting respository, URI for our example study could be:
+If "RepoAuthority.org"" were to be the hosting respository, URI for our example study could be:
 
-`https://ct.gov/clinicaltrial#e92971d5421dd4e83ed3e6f6bcc6cf0bd3538d2a`
+`https://RepoAuthority.org/clinicaltrial#e92971d5421dd4e83ed3e6f6bcc6cf0bd3538d2a`
 
 Where:
 
-* ct.gov is the Namespace
+* RepoAuthority.org is the Namespace
 * clinicaltrial# is the Resource Type
 * the hash value is the UUID for the study.
 
 If another organization like the FDA were to host information about the same study, the URI could be formed as:
-`https://fda.gov/study#e92971d5421dd4e83ed3e6f6bcc6cf0bd3538d2a`
+`https://aSecondRepoAuthority.org/study#e92971d5421dd4e83ed3e6f6bcc6cf0bd3538d2a`
 
 In this example both the Namspace and Resource Type changed, but the study id remains stable.
 
@@ -123,7 +167,7 @@ External facing addresses could use .com and resolve publically available inform
 The following triples tie the information together:
 
 ```
-https://ct.gov/clinicaltrial#e92971d5421dd4e83ed3e6f6bcc6cf0bd3538d2a
+https://RepoAuthority.org/clinicaltrial#e92971d5421dd4e83ed3e6f6bcc6cf0bd3538d2a
    eg:hasUUID         "e92971d5421dd4e83ed3e6f6bcc6cf0bd3538d2a"^^xsd:string;
    eg:hasCompanyIntURI  https://data.abcPharma.com/clinicaltrial/ALZ-XAN-0005 ;
    eg:hasCompanyExtURI  https://data.abcPharma.net/clinicaltrial/ALZ-XAN-0005 ;
@@ -149,7 +193,7 @@ TODO: Develop a list of recommended predicates.
 (Advantages, linking to other information. May link to separate pages)
 
 ## Governance
-A central organization is needed to create study URIs, ensure their uniqueness, and make then available. A logical choice would be [[ClinicalTrials.gov]](https://clinicaltrials.gov) . 
+A central organization is needed to create study URIs, ensure their uniqueness, and make them available. A logical choice would be [[ClinicalTrials.gov]](https://clinicaltrials.gov). They could be approached when the idea is more developed. 
 
 ## References
 [Cool URIs for the Semantic Web](https://www.w3.org/TR/cooluris/)

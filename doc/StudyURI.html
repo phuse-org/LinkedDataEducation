@@ -196,10 +196,17 @@ $(document).ready(function () {
 <h2>Problem Statement</h2>
 <p>The proposal addresses multiple challenges surrounding clinical trial identifiers. The concept of a unique identifier for a clinical trials is not new, but implementations are inconsistent and subject to change over time.</p>
 <ul>
-<li><p>Multiple repositories Information about trials is available in mutliiple repsoitories [TODO: ADD links]. There is no consistent way to bring this information together.</p></li>
-<li><p>Inconsisent synonyms Mutliple synonyms (codes, numbers, acronyms) are used for the same trial. For example: <code>D3562C00096</code>, <code>4522IL/0096</code>, <code>NCT00240331</code>, <code>2004-001741-15</code>and <code>AURORA</code> all refer to the same study. Data must be merged from different systems that use these acronyms, often relying in free text fields for study codes and acronyms.</p></li>
-<li><p>Difficulty with Lookups Multiple, inconsistent acronyms and synonyms complicate obtaining information from public data request portals such as <a href="https://www.clinicalstudydatarequest.com" class="uri">https://www.clinicalstudydatarequest.com</a> and <a href="https://astrazenecagroup-dt.pharmacm.com" class="uri">https://astrazenecagroup-dt.pharmacm.com</a> Clinical studies are key entities over time, as study data can be of renewed interest in collaborative research projects years after the study was conducted. This is a challenge in a changing pharmaceutical landscape where companies merge, and medical products are divested and acquired. Meanwhile the operating models within companies change, systems are upgraded, information is migrated, and code standards change. As a result, studies have multiple identifiers associated with them. Some identifiers are public, such as registry IDs and the identifiers assigned by regulatory authorities. Others are internal, such as the codes and acronyms used by sponsors. Some of the study codes are a consequence of different code standards. Different code standards can be seen as a representation of the history of the investigated medical product and of the sponsor company.</p></li>
+<li>Multiple repositories</li>
 </ul>
+<p>Information about trials is available in mutliiple repsoitories [TODO: ADD links]. There is no consistent way to bring this information together.</p>
+<ul>
+<li>Inconsisent synonyms</li>
+</ul>
+<p>Mutliple synonyms (codes, numbers, acronyms) are used for the same trial. For example: <code>D3562C00096</code>, <code>4522IL/0096</code>, <code>NCT00240331</code>, <code>2004-001741-15</code>and <code>AURORA</code> all refer to the same study. Data must be merged from different systems that use these acronyms, often relying in free text fields for study codes and acronyms.</p>
+<ul>
+<li>Difficulty with Lookups</li>
+</ul>
+<p>Multiple, inconsistent acronyms and synonyms complicate obtaining information from public data request portals such as <a href="https://www.clinicalstudydatarequest.com" class="uri">https://www.clinicalstudydatarequest.com</a> and <a href="https://astrazenecagroup-dt.pharmacm.com" class="uri">https://astrazenecagroup-dt.pharmacm.com</a> Clinical studies are key entities over time, as study data can be of renewed interest in collaborative research projects years after the study was conducted. This is a challenge in a changing pharmaceutical landscape where companies merge, and medical products are divested and acquired. Meanwhile the operating models within companies change, systems are upgraded, information is migrated, and code standards change. As a result, studies have multiple identifiers associated with them. Some identifiers are public, such as registry IDs and the identifiers assigned by regulatory authorities. Others are internal, such as the codes and acronyms used by sponsors. Some of the study codes are a consequence of different code standards. Different code standards can be seen as a representation of the history of the investigated medical product and of the sponsor company.</p>
 <p>[TODO: Are there concepts to be used from CoolURIs, or is it misleading] <a href="https://www.w3.org/TR/cooluris/" class="uri">https://www.w3.org/TR/cooluris/</a></p>
 </div>
 </div>
@@ -217,7 +224,7 @@ $(document).ready(function () {
 <h1>Proposed Structure</h1>
 <div id="parent-uri" class="section level2">
 <h2>Parent URI</h2>
-<p>The URI contains an unique, machine readable value (UUID) that is stable over time. It can be recreated based on known data fed into the hashing algorithm (ie, it is not a randomly generated UUID or UUID based on a changing timestamp). The known date is the title on the study protocol (on the date that the UUID is generated) and the date in format YYYY-MM-DD.</p>
+<p>The URI contains an unique, machine readable value (UUID) that is stable over time. It can be recreated based on known data provided to the hashing algorithm (ie, it is not a randomly generated UUID or UUID based on a changing timestamp). The known date is the title on the study protocol (on the date that the UUID is generated) and the date in format YYYY-MM-DD.</p>
 </div>
 <div id="create-the-study-uuid" class="section level2">
 <h2>Create the Study UUID</h2>
@@ -245,17 +252,49 @@ studyURIHash &lt;- sha1(protocolTitleDate_nws)
 
 studyURIHash</code></pre>
 </div>
+</div>
+<div id="alternate-method-for-discussion" class="section level1">
+<h1>Alternate method for Discussion:</h1>
+<div id="reversible-encoding.-eg-base64" class="section level2">
+<h2>Reversible encoding. Eg: base64</h2>
+<p>Original:</p>
+<p><code>Safety and Efficacy of the Xanomeline Transdermal Therapeutic System (TTS) in Patients with Mild to Moderate Alzheimer's Disease</code></p>
+<p>Value to encode</p>
+<p><code>SafetyandEfficacyoftheXanomelineTransdermalTherapeutic\nSystem(TTS)inPatientswithMildtoModerateAlzheimer'sDisease2019-02-1</code></p>
+<p>base64 encoded:</p>
+<p><code>U2FmZXR5YW5kRWZmaWNhY3lvZnRoZVhhbm9tZWxpbmVUcmFuc2Rlcm1hbFRoZXJhcGV1dGljClN5c3RlbShUVFMpaW5QYXRpZW50c3dpdGhNaWxkdG9Nb2RlcmF0ZUFsemhlaW1lcidzRGlzZWFzZTIwMTktMDItMTQ=</code></p>
+<p>Decoded: <code>SafetyandEfficacyoftheXanomelineTransdermalTherapeutic\nSystem(TTS)inPatientswithMildtoModerateAlzheimer'sDisease2019-02-1</code></p>
+<pre><code>library(RCurl)
+
+protocolTitle &lt;-&quot;Safety and Efficacy of the Xanomeline Transdermal Therapeutic 
+  System (TTS) in Patients with Mild to Moderate Alzheimer's Disease&quot;
+
+protocolTitle_nws &lt;- gsub(&quot; &quot;,&quot;&quot;, protocolTitle)
+
+dateToday &lt;- '2019-02-14'
+
+protocolTitleDate_nws &lt;- paste0(protocolTitle_nws, dateToday)
+
+protocolTitleDate_nws 
+
+# Encode a UUID 
+dev_UUID &lt;- base64(protocolTitleDate_nws)
+dev_UUID
+
+decoded_UUID &lt;- base64Decode(dev_UUID)
+decoded_UUID</code></pre>
+</div>
 <div id="form-the-study-uri" class="section level2">
 <h2>Form the Study URI</h2>
-<p>The study URI is composed of 3 components: A <strong>Namespace</strong>, <strong>Resource Type</strong>, and the <strong>UUID</strong>. If ClinicalTrials.gov were to be the hosting respository, URI for our example study could be:</p>
-<p><code>https://ct.gov/clinicaltrial#e92971d5421dd4e83ed3e6f6bcc6cf0bd3538d2a</code></p>
+<p>The study URI is composed of 3 components: A <strong>Namespace</strong>, <strong>Resource Type</strong>, and the <strong>UUID</strong>. If “RepoAuthority.org”&quot; were to be the hosting respository, URI for our example study could be:</p>
+<p><code>https://RepoAuthority.org/clinicaltrial#e92971d5421dd4e83ed3e6f6bcc6cf0bd3538d2a</code></p>
 <p>Where:</p>
 <ul>
-<li>ct.gov is the Namespace</li>
+<li>RepoAuthority.org is the Namespace</li>
 <li>clinicaltrial# is the Resource Type</li>
 <li>the hash value is the UUID for the study.</li>
 </ul>
-<p>If another organization like the FDA were to host information about the same study, the URI could be formed as: <code>https://fda.gov/study#e92971d5421dd4e83ed3e6f6bcc6cf0bd3538d2a</code></p>
+<p>If another organization like the FDA were to host information about the same study, the URI could be formed as: <code>https://aSecondRepoAuthority.org/study#e92971d5421dd4e83ed3e6f6bcc6cf0bd3538d2a</code></p>
 <p>In this example both the Namspace and Resource Type changed, but the study id remains stable.</p>
 </div>
 <div id="uri-for-company-internal-and-external-resolution" class="section level2">
@@ -264,7 +303,7 @@ studyURIHash</code></pre>
 <p><code>https://data.abcPharma.com/clinicaltrial/ALZ-XAN-0005</code></p>
 <p><code>https://data.abcPharma.net/clinicaltrial/ALZ-XAN-0005</code></p>
 <p>The following triples tie the information together:</p>
-<pre><code>https://ct.gov/clinicaltrial#e92971d5421dd4e83ed3e6f6bcc6cf0bd3538d2a
+<pre><code>https://RepoAuthority.org/clinicaltrial#e92971d5421dd4e83ed3e6f6bcc6cf0bd3538d2a
    eg:hasUUID         &quot;e92971d5421dd4e83ed3e6f6bcc6cf0bd3538d2a&quot;^^xsd:string;
    eg:hasCompanyIntURI  https://data.abcPharma.com/clinicaltrial/ALZ-XAN-0005 ;
    eg:hasCompanyExtURI  https://data.abcPharma.net/clinicaltrial/ALZ-XAN-0005 ;
@@ -310,7 +349,7 @@ studyURIHash</code></pre>
 </div>
 <div id="governance" class="section level2">
 <h2>Governance</h2>
-<p>A central organization is needed to create study URIs, ensure their uniqueness, and make then available. A logical choice would be <a href="https://clinicaltrials.gov">[ClinicalTrials.gov]</a> .</p>
+<p>A central organization is needed to create study URIs, ensure their uniqueness, and make them available. A logical choice would be <a href="https://clinicaltrials.gov">[ClinicalTrials.gov]</a>. They could be approached when the idea is more developed.</p>
 </div>
 <div id="references" class="section level2">
 <h2>References</h2>
