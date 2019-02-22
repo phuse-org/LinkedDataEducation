@@ -92,6 +92,7 @@ The UUID is the most critical component because it serves as the unique identifi
 We propose three possible methods of constructing the UUID. All examples use the title of a study donated to the PhUSE organization.
 
 ###Method 1 : Online UUID Generator
+
 An online UUID generator is used and there is no dependency on the study title. Several online UUID generators are available and the one chosen here is for example purposes only. A generator will be recommended at a later time.
 
 
@@ -107,6 +108,7 @@ Cons:
 
 
 ###Method 2: Hash of Study Title (+Datetime stamp)
+
 This method creates an SHA-1 hash for the study title + datetime stamp for when the hash is created. The time is entered manually for this example but could be captured automatically by the software at the exact time of creation and recorded along with the hash value.
 
 Steps:
@@ -151,6 +153,7 @@ Cons:
 
 
 ###Method 3: Encoding (base64) of Study Title (+Datetime stamp) 
+
 Original:
 
 `Safety and Efficacy of the Xanomeline Transdermal Therapeutic System (TTS) in Patients with Mild to Moderate Alzheimer's Disease`
