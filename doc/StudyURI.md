@@ -16,7 +16,7 @@ and subject to change over time. Challenges include:
 
 * **Multiple repositories**
 
-Information about trials is available in mutliple repsoitories including [[ClinicalTrials.gov]]](https://clinicaltrials.gov/),  [[European Clinical Trials Database(EudraCT)]](https://eudract.ema.europa.eu/), repositories for specific countries, and databases within pharmaceutical companies themselves.There is no consistent way to bring this information together for patients, researchers, or regulatory organizations.
+Information about trials is available in mutliple repsoitories including [ClinicalTrials.gov](https://clinicaltrials.gov/), [European Clinical Trials Database(EudraCT)](https://eudract.ema.europa.eu/), repositories for specific countries, and databases within pharmaceutical companies themselves.There is no consistent way to bring this information together for patients, researchers, or regulatory organizations.
 
 
 * **Inconsisent synonyms**
@@ -67,9 +67,9 @@ Example:
 
 Where:
 
-* RepoAuthority.org is the **Namespace**
-* clinicaltrial# is the **Resource Type**
-* The string after the # is the **UUID** for the study.
+* `RepoAuthority.org` is the **Namespace**
+* `clinicaltrial#` is the **Resource Type**
+* The string after the `#` is the **UUID** for the study.
 
 *Note how URIs use the http scheme but this does not necessarily mean the data is available on the web! This type of identifier can be used in databases behind company firewalls and do not require http services to make use of the data.* 
 
@@ -78,33 +78,50 @@ Namespaces are subject to change over time and may represent different entities 
 
 | Namespace | Description                                                     |
 |-----------|-----------------------------------------------------------------|
-| PharmaCo.com   | Publicly available information about the study at the company web site |
-| PharmaCo.net   | Information available within the company firewall |
-| RepoAuth.org   | information at a specific repository (eg: clinicalTriials.gov or EudraCT ) |
+| PharmaCo.com   | Publicly available information about the study at the "PharmaCo" company web site |
+| PharmaCo.net   | Information available within the "PharmaCo" company firewall |
+| RepoAuth.org   | Information at a specific repository (eg: clinicalTriials.gov, EudraCT, or others ) |
 
 
 ##Resource Type
 We recommend the use of *clinicaltrial* for the resource type for clear identification of the resource type. 
 
 ##UUID
-The UUID is the most critical component because it serves as the unique identifier. It must satisify the ID Requirements listed above. 
+The UUID is the most critical component because it serves as the unique identifier. It must satisify the aforementioned ID Requirements listed above. 
 
-We propose three possible methods of constructing the UUID. All examples use the title of a study donated to the PhUSE organization.
+We propose three possible methods of constructing the UUID. All methods use the fictional company "PharmaCo.""
 
-###Method 1 : Online UUID Generator
+###Method 1 : UUID Generators
 
-An online UUID generator is used and there is no dependency on the study title. Several online UUID generators are available and the one chosen here is for example purposes only. A generator will be recommended at a later time.
+#### 1 a)  Online UUID Generator
+This method relies on an online UUID generator and has no dependency on the study title. Several online UUID generators are available and the one chosen here is for example purposes only. 
 
-
-
-*TODO: Add Instructions and example*
-
+1. Browse to the online UUID generator https://www.uuidgenerator.net/
+2. Generate a UUID. 
+ ![](images/UUIDGenerator.png)
+3. Copy the UUID
+`2fff60b1-4d16-4721-adee-56a8563f5a92`
+4. Create the URI
+`http://RepoAuthority.org/clinicaltrial#2fff60b1-4d16-4721-adee-56a8563f5a92`
 
 Pros:  
 * Ease of creation
+
 Cons:  
 * Not reproducible
 * Not decodable back to original source
+* Manual method (more labor-intensive to generate UUIDs for a large number of studies.)
+
+#### 1 b)  Programmatic UUID Generator
+
+This example uses the R package `uuid` to programatically create UUIDs. Other languages can be used in 
+a similar fashion.
+
+```
+library(uuid)
+
+[code to be added]
+```
 
 
 ###Method 2: Hash of Study Title (+Datetime stamp)
@@ -235,7 +252,7 @@ TODO: Develop a list of recommended predicates.
 (Advantages, linking to other information. May link to separate pages)
 
 ## Governance
-A central organization is needed to create study URIs, ensure their uniqueness, and make them available. A logical choice would be [[ClinicalTrials.gov]](https://clinicaltrials.gov). They could be approached when the idea is more developed. 
+A central organization is needed to create study URIs, ensure their uniqueness, and make them available. A logical choice would be [ClinicalTrials.gov](https://clinicaltrials.gov). They could be approached when the idea is more developed. 
 
 ## References
 [Cool URIs for the Semantic Web](https://www.w3.org/TR/cooluris/)
