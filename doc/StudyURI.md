@@ -55,7 +55,7 @@ A clinical trial requires an identifier that satisifies the following criteria:
 
 # Proposal
 ##URIs
-[Uniform Resource Identifiers](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier) (URIs) as [Resource Description Framework](https://en.wikipedia.org/wiki/Resource_Description_Framework) (RDF) is an ideal candidate for clinical study  identifiers. By definition, they unambiguously identify a resource (in this case, a clinical study) and are a well-established [W3C standard](https://www.w3.org/wiki/URI).
+[Uniform Resource Identifiers](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier) (URIs) as [Resource Description Framework](https://en.wikipedia.org/wiki/Resource_Description_Framework) (RDF) is an ideal candidate for clinical trial identifiers. By definition, they unambiguously identify a resource (in this case, a clinical trial) and are a well-established [W3C standard](https://www.w3.org/wiki/URI).
 
 
 
@@ -295,27 +295,25 @@ Cons:
 * Long UUID
 
 
-
-**OLD DRAFT TEXT BELOW HERE. CLEAN IT UP!**
-
-
 ## Recommended Predicates
-TODO: Develop a list of recommended predicates.
+*Section under development.*
 
-| Predicate     | Description   |
-| ------------- |:-------------:|
-| hasNCTID      |  |
-| hasCompanyID  |  |
-| hasAcronym    |  |
-| hasEuroCTID   |  | 
+| Predicate            | Object Description   |
+| ---------------------|:-------------:|
+| hasEudraCTID         | EudraCT ID number.  | 
+| hasNCTID             | ClinicalTrials.gov ID (NCT number)   |
+| hasUUID              | UUID used to form Study URI 
+| hasUUIDCreateDate    | Date UUID created
+| hasUUIDCreateMethod  | Method used to generate UUID
+| hasCompanyID         | Company identifiers  |
+| hasCompanyAcronym    | Company acronyms |
 
-(To Add: prefLabel, description, recommended/mandatory/optional,  etc.)
 
 ## Examples
-
+*Section to be developed*
 
 ## Use Cases
-(Advantages, linking to other information. May link to separate pages)
+*Section to be developed*
 
 ## Governance
 A central organization is needed to create study URIs, ensure their uniqueness, and make them available. A logical choice would be [ClinicalTrials.gov](https://clinicaltrials.gov). They could be approached when the idea is more developed. 
