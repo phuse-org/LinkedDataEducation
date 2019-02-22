@@ -50,12 +50,12 @@ A clinical trial requires an identifier that satisifies the following criteria:
 * Does not change over time (stable, immutable) 
 * Facilitates links to other online repositories as well as internal and external information about the study. 
 * Links to human-interpretable identifiers and metadata
-* Can be created within an organization before submission to a repository, while ensuring it is unique to that study.
+* Can be created before submission to a repository or governing authority, while ensuring it is unique to that study.
 
 
 # Proposal
 ##URIs
-[[Uniform Resource Identifiers]](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier) (URIs) as [[Resource Description Framework]](https://en.wikipedia.org/wiki/Resource_Description_Framework) (RDF) is an ideal candidate for clinical study  identifiers. By definition, they unambiguously identify a resource (in this case, a clinical study) and are a well-established [[W3C standard]](https://www.w3.org/wiki/URI).
+[Uniform Resource Identifiers](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier) (URIs) as [Resource Description Framework](https://en.wikipedia.org/wiki/Resource_Description_Framework) (RDF) is an ideal candidate for clinical study  identifiers. By definition, they unambiguously identify a resource (in this case, a clinical study) and are a well-established [W3C standard](https://www.w3.org/wiki/URI).
 
 
 

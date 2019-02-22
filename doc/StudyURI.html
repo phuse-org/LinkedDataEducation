@@ -219,14 +219,14 @@ $(document).ready(function () {
 <li>Does not change over time (stable, immutable)</li>
 <li>Facilitates links to other online repositories as well as internal and external information about the study.</li>
 <li>Links to human-interpretable identifiers and metadata</li>
-<li>Can be created within an organization before submission to a repository, while ensuring it is unique to that study.</li>
+<li>Can be created before submission to a repository or governing authority, while ensuring it is unique to that study.</li>
 </ul>
 </div>
 <div id="proposal" class="section level1">
 <h1>Proposal</h1>
 <div id="uris" class="section level2">
 <h2>URIs</h2>
-<p><a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier">[Uniform Resource Identifiers]</a> (URIs) as <a href="https://en.wikipedia.org/wiki/Resource_Description_Framework">[Resource Description Framework]</a> (RDF) is an ideal candidate for clinical study identifiers. By definition, they unambiguously identify a resource (in this case, a clinical study) and are a well-established <a href="https://www.w3.org/wiki/URI">[W3C standard]</a>.</p>
+<p><a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier">Uniform Resource Identifiers</a> (URIs) as <a href="https://en.wikipedia.org/wiki/Resource_Description_Framework">Resource Description Framework</a> (RDF) is an ideal candidate for clinical study identifiers. By definition, they unambiguously identify a resource (in this case, a clinical study) and are a well-established <a href="https://www.w3.org/wiki/URI">W3C standard</a>.</p>
 <p>The proposed study URI is composed of three components: A <strong>Namespace</strong>, <strong>Resource Type</strong>, and the <strong>UUID</strong>.</p>
 <p>Example:</p>
 <p><code>http://RepoAuthority.org/clinicaltrial#e92971d5421dd4e83ed3e6f6bcc6cf0bd3538d2a</code></p>
@@ -279,7 +279,7 @@ $(document).ready(function () {
 <div id="method-1-online-uuid-generator" class="section level3">
 <h3>Method 1 : Online UUID Generator</h3>
 <p>An online UUID generator is used and there is no dependency on the study title. Several online UUID generators are available and the one chosen here is for example purposes only. A generator will be recommended at a later time.</p>
-<p>to the PhUSE organization. The study title is</p>
+<p><em>TODO: Add Instructions and example</em></p>
 <p>Pros:<br />
 * Ease of creation Cons:<br />
 * Not reproducible * Not decodable back to original source</p>
@@ -403,11 +403,11 @@ decoded_UUID</code></pre>
 </div>
 <div id="contributors" class="section level2">
 <h2>Contributors</h2>
-<pre><code>- Kerstin Forsberg
-- Daniel Goude
-- Nolan Nichols
-- Johannes Ulander
-- Tim Williams</code></pre>
+<pre><code>- Kerstin Forsberg (AstraZeneca)
+- Daniel Goude (AstraZeneca)
+- Nolan Nichols (Genentech)
+- Johannes Ulander (A3 Informatics)
+- Tim Williams (UCB Biosciences)</code></pre>
 </div>
 </div>
 
