@@ -1,27 +1,34 @@
-# Study URI
-This is a working draft propsoal for creation, management, and use of Uniform Resource
+# Prologue
+This is a working draft proposal for creation, management, and use of Uniform Resource
 Identifiers (URIs) for clinical trial identification. The work was inspired by the
 PhUSE EUConnect18 paper "Study URI" [[Paper]](http://www.phusewiki.org/docs/Frankfut%20Connect%202018/TT/Papers/TT10-tt09-study-uri-19746.pdf) [[Presentation]](http://www.phusewiki.org/docs/Frankfut%20Connect%202018/TT/Presentations/TT10-tt09-study-uri-pub-19747.pdf) by Kerstin Forsberg
 and Daniel Goude. These recommendations are under development and subject to change.
 
 You may contribute to this project by branching the Github repository. Please
-send comments and feedback by raising a Github issue.
+send comments and feedback by raising a Github *issue*.
 
 [[Team Discussion of active questions]](StudyURI-questions.md)
 
-## Problem Statement
-The proposal addresses multiple challenges surrounding clinical trial identifiers. The concept
-of a unique identifier for a clinical trials is not new, but implementations are inconsistent 
-and subject to change over time. Challenges include:
+## Introduction
+The concept of unique identifiers for clinical trials is not new, but implementations are inconsistent and subject to change over time. The **NCT Number**, commonly referred to as the **ClinicalTrials.gov identifier**, is one of the most widely recognized study identifiers [[ClinicalTrials.gov]](https://clinicaltrials.gov/). This number is created after submission and review of the protocol at ClinicalTrials.gov, so it is not available earlier in the development process. The European Medicines Agency provides the capability to generate unique identifiers for trials, called the **EudraCT number**, which can be used to look up information in the [European Clinical Trials Database(EudraCT)](https://eudract.ema.europa.eu/). There are also repositories for specific countries, as well as multiple databases within the pharmaceutical companies themselves.There is no consistent way to bring this information together for patients, researchers, or regulatory organizations.
+
+Historically, development of identifiers was driven by the need to identify trials in specific repositories, with the hope of leading to broader usage and application. Unfortunately, no one standard exists. Multiple repositories contain different types of information about the same trial, and companies maintain their own public and private information.
+
+The use case for identifiers has progressed beyond the need for locating information within a single data silo. Web-based identifiers (URIs) can provide the required unique identifier while also facilitating links between repositories and to other materials both on the public internet and also private information inside a company's firewall. This dual functionality greatly enhances the utility of identifiers that use this approach.
+
+Searching for information about clinical trials on the the web is now commonplace for both patients and researchers. In fact, patients and the general public have come to *expect* this information is available online. Without a common identifier, multiple searches must be executed using  synonyms (codes, numbers, acronyms) for the same trial. For example: `D3562C00096`, `4522IL/0096`, `NCT00240331`, `2004-001741-15`and `AURORA` all refer to the same study. Data must be merged from different systems that use these acronyms, often relying in free text fields for study codes and acronyms. Current expectations for ease of access to this information are not being met.
+
+
+
+---------  WORK IN PROGRESS ----------------
+
+
+This proposal addresses the multiple challenges surrounding clinical trial identifiers, including:
+
 
 * **Multiple repositories**
 
-Information about trials is available in mutliple repsoitories including [ClinicalTrials.gov](https://clinicaltrials.gov/), [European Clinical Trials Database(EudraCT)](https://eudract.ema.europa.eu/), repositories for specific countries, and databases within pharmaceutical companies themselves.There is no consistent way to bring this information together for patients, researchers, or regulatory organizations.
-
-
 * **Inconsisent synonyms**
-
-Mutliple synonyms (codes, numbers, acronyms) are used for the same trial. For example: `D3562C00096`, `4522IL/0096`, `NCT00240331`, `2004-001741-15`and `AURORA` all refer to the same study. Data must be merged from different systems that use these acronyms, often relying in free text fields for study codes and acronyms.
 
 * **Difficulty with Lookups**
 
@@ -42,11 +49,11 @@ history of the investigated medical product and of the sponsor company.
 
 # ID Requirements
 
-A clinical trial requires an identifier that satisifies the following criteria: 
+A clinical trial requires an identifier that satisfies the following criteria: 
 
 * ID is unique to the trial 
 * Easy to create and use
-* Is machine-readable, without human-interpretable meaning (which is open to interperation and change)
+* Is machine-readable, without human interpretable meaning (which is open to interpretation and change)
 * Does not change over time (stable, immutable) 
 * Facilitates links to other online repositories as well as internal and external information about the study. 
 * Links to human-interpretable identifiers and metadata
@@ -78,14 +85,14 @@ Namespaces are subject to change over time and may represent different entities 
 |-----------|-----------------------------------------------------------------|
 | PharmaCo.com   | Publicly available information about the study at the "PharmaCo" company web site |
 | PharmaCo.net   | Information available within the "PharmaCo" company firewall |
-| RepoAuth.org   | Information at a specific repository (eg: clinicalTriials.gov, EudraCT, or others ) |
+| RepoAuth.org   | Information at a specific repository (e.g.: clinicalTrials.gov, EudraCT, or others ) |
 
 
 ## Resource Type
 We recommend the use of *clinicaltrial* for the resource type for clear identification of the resource type. 
 
 ## UUID
-The UUID is the most critical component because it serves as the unique identifier. It must satisify the aforementioned ID Requirements listed above. 
+The UUID is the most critical component because it serves as the unique identifier. It must satisfy the aforementioned ID Requirements listed above. 
 
 We propose three possible methods of constructing the UUID. All methods use the fictional company "PharmaCo.""
 
@@ -159,7 +166,7 @@ Cons:
 * Cannot decode value back to original source
 
 
-### Method 2: Hash of Study Title (+Datetime stamp)
+### Method 2: Hash of Study Title (+ time stamp)
 
 This method creates an SHA-1 hash for the study title combined with the time stamp for when the hash is created. The time is entered manually for this example but could be captured automatically by the software at the exact time of creation and recorded along with the hash value. This example uses the R package `digest` to create the hash. Other languages can be used in a similar fashion.
 
@@ -175,10 +182,10 @@ Steps:
 2. Strip the study title of all spaces to remove potential variability of leading, trailing, and spaces within the title. 
 `SafetyandEfficacyoftheXanomelineTransdermalTherapeuticSystem(TTS)inPatientswithMildtoModerateAlzheimer'sDisease"`
 
-3. Time stamp at creation of the UUID could be captured dynamically at run-time. For this example it is hard-coded in the scipt.
+3. Time stamp at creation of the UUID could be captured dynamically at run-time. For this example it is hard-coded in the script.
 `2019-02-14T09:30:10`
 
-4. Contentate the modified study title with the time stamp:
+4. Concatenate the modified study title with the time stamp:
 `SafetyandEfficacyoftheXanomelineTransdermalTherapeuticSystem(TTS)inPatientswithMildtoModerateAlzheimer'sDisease2019-02-14T09:30:10`
 
 5. Create an SHA-1 hash of the title+date:
@@ -215,11 +222,11 @@ studyURI
 ```
 
 Pros:  
-* Shorter UUID compared to the other metods
+* Shorter UUID compared to the other methods
 * Reproducible
 
 Cons:  
-* Not decodable back to orginal source
+* Not decodable back to original source
 
 
 ### Method 3: base64 Encoding of Study Title (+ time stamp) 
@@ -233,13 +240,13 @@ Steps:
 2. Strip the study title of all spaces to remove potential variability of leading, trailing, and spaces within the title. 
 `SafetyandEfficacyoftheXanomelineTransdermalTherapeuticSystem(TTS)inPatientswithMildtoModerateAlzheimer'sDisease`
 
-3. Time stamp at creation of the UUID could be captured dynamically at run-time. For this example it is hard-coded in the scipt. `2019-02-14T09:30:10`
+3. Time stamp at creation of the UUID could be captured dynamically at run-time. For this example it is hard-coded in the script. `2019-02-14T09:30:10`
 
-4. Contentate the modified study title with the time stamp:
+4. Concatenate the modified study title with the time stamp:
 
 `SafetyandEfficacyoftheXanomelineTransdermalTherapeuticSystem(TTS)inPatientswithMildtoModerateAlzheimer'sDisease2019-02-14T09:30:10`
 
-5. Ceate the base64 encoding of the title+time stamp:
+5. Create the base64 encoding of the title+time stamp:
 
 `U2FmZXR5YW5kRWZmaWNhY3lvZnRoZVhhbm9tZWxpbmVUcmFuc2Rlcm1hbFRoZXJhcGV1dGljClN5c3RlbShUVFMpaW5QYXRpZW50c3dpdGhNaWxkdG9Nb2RlcmF0ZUFsemhlaW1lcidzRGlzZWFzZTIwMTktMDItMTRUMDk6MzA6MTA=`
 

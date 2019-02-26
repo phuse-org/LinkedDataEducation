@@ -187,35 +187,34 @@ $(document).ready(function () {
 </div>
 
 
-<div id="study-uri" class="section level1">
-<h1>Study URI</h1>
-<p>This is a working draft propsoal for creation, management, and use of Uniform Resource Identifiers (URIs) for clinical trial identification. The work was inspired by the PhUSE EUConnect18 paper “Study URI” <a href="http://www.phusewiki.org/docs/Frankfut%20Connect%202018/TT/Papers/TT10-tt09-study-uri-19746.pdf">[Paper]</a> <a href="http://www.phusewiki.org/docs/Frankfut%20Connect%202018/TT/Presentations/TT10-tt09-study-uri-pub-19747.pdf">[Presentation]</a> by Kerstin Forsberg and Daniel Goude. These recommendations are under development and subject to change.</p>
-<p>You may contribute to this project by branching the Github repository. Please send comments and feedback by raising a Github issue.</p>
+<div id="prologue" class="section level1">
+<h1>Prologue</h1>
+<p>This is a working draft proposal for creation, management, and use of Uniform Resource Identifiers (URIs) for clinical trial identification. The work was inspired by the PhUSE EUConnect18 paper “Study URI” <a href="http://www.phusewiki.org/docs/Frankfut%20Connect%202018/TT/Papers/TT10-tt09-study-uri-19746.pdf">[Paper]</a> <a href="http://www.phusewiki.org/docs/Frankfut%20Connect%202018/TT/Presentations/TT10-tt09-study-uri-pub-19747.pdf">[Presentation]</a> by Kerstin Forsberg and Daniel Goude. These recommendations are under development and subject to change.</p>
+<p>You may contribute to this project by branching the Github repository. Please send comments and feedback by raising a Github <em>issue</em>.</p>
 <p><a href="StudyURI-questions.md">[Team Discussion of active questions]</a></p>
-<div id="problem-statement" class="section level2">
-<h2>Problem Statement</h2>
-<p>The proposal addresses multiple challenges surrounding clinical trial identifiers. The concept of a unique identifier for a clinical trials is not new, but implementations are inconsistent and subject to change over time. Challenges include:</p>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>The concept of unique identifiers for clinical trials is not new, but implementations are inconsistent and subject to change over time. The <strong>NCT Number</strong>, commonly referred to as the <strong>ClinicalTrials.gov identifier</strong>, is one of the most widely recognized study identifiers <a href="https://clinicaltrials.gov/">[ClinicalTrials.gov]</a>. This number is created after submission and review of the protocol at ClinicalTrials.gov, so it is not available earlier in the development process. The European Medicines Agency provides the capability to generate unique identifiers for trials, called the <strong>EudraCT number</strong>, which can be used to look up information in the <a href="https://eudract.ema.europa.eu/">European Clinical Trials Database(EudraCT)</a>. There are also repositories for specific countries, as well as multiple databases within the pharmaceutical companies themselves.There is no consistent way to bring this information together for patients, researchers, or regulatory organizations.</p>
+<p>Historically, development of identifiers was driven by the need to identify trials in specific repositories, with the hope of leading to broader usage and application. Unfortunately, no one standard exists. Multiple repositories contain different types of information about the same trial, and companies maintain their own public and private information.</p>
+<p>The use case for identifiers has progressed beyond the need for locating information within a single data silo. Web-based identifiers (URIs) can provide the required unique identifier while also facilitating links between repositories and to other materials both on the public internet and also private information inside a company’s firewall. This dual functionality greatly enhances the utility of identifiers that use this approach.</p>
+<p>Searching for information about clinical trials on the the web is now commonplace for both patients and researchers. In fact, patients and the general public have come to <em>expect</em> this information is available online. Without a common identifier, multiple searches must be executed using synonyms (codes, numbers, acronyms) for the same trial. For example: <code>D3562C00096</code>, <code>4522IL/0096</code>, <code>NCT00240331</code>, <code>2004-001741-15</code>and <code>AURORA</code> all refer to the same study. Data must be merged from different systems that use these acronyms, often relying in free text fields for study codes and acronyms. Current expectations for ease of access to this information are not being met.</p>
+<p>——— WORK IN PROGRESS —————-</p>
+<p>This proposal addresses the multiple challenges surrounding clinical trial identifiers, including:</p>
 <ul>
-<li><strong>Multiple repositories</strong></li>
-</ul>
-<p>Information about trials is available in mutliple repsoitories including <a href="https://clinicaltrials.gov/">ClinicalTrials.gov</a>, <a href="https://eudract.ema.europa.eu/">European Clinical Trials Database(EudraCT)</a>, repositories for specific countries, and databases within pharmaceutical companies themselves.There is no consistent way to bring this information together for patients, researchers, or regulatory organizations.</p>
-<ul>
-<li><strong>Inconsisent synonyms</strong></li>
-</ul>
-<p>Mutliple synonyms (codes, numbers, acronyms) are used for the same trial. For example: <code>D3562C00096</code>, <code>4522IL/0096</code>, <code>NCT00240331</code>, <code>2004-001741-15</code>and <code>AURORA</code> all refer to the same study. Data must be merged from different systems that use these acronyms, often relying in free text fields for study codes and acronyms.</p>
-<ul>
-<li><strong>Difficulty with Lookups</strong></li>
+<li><p><strong>Multiple repositories</strong></p></li>
+<li><p><strong>Inconsisent synonyms</strong></p></li>
+<li><p><strong>Difficulty with Lookups</strong></p></li>
 </ul>
 <p>Multiple, inconsistent acronyms and synonyms complicate obtaining information from public data request portals such as <a href="https://www.clinicalstudydatarequest.com" class="uri">https://www.clinicalstudydatarequest.com</a> and <a href="https://astrazenecagroup-dt.pharmacm.com" class="uri">https://astrazenecagroup-dt.pharmacm.com</a> Clinical studies are key entities over time, as study data can be of renewed interest in collaborative research projects years after the study was conducted. This is a challenge in a changing pharmaceutical landscape where companies merge, and medical products are divested and acquired. Meanwhile, the operating models within companies change, systems are upgraded, information is migrated, and coding standards change. As a result, multiple identifiers become associated with a single study. Some identifiers are public, such as registry IDs and the identifiers assigned by regulatory authorities. Others are internal, such as the codes and acronyms used by sponsors. Some of the study codes are a consequence of different code standards. Different code standards can be seen as a representation of the history of the investigated medical product and of the sponsor company.</p>
 </div>
 </div>
 <div id="id-requirements" class="section level1">
 <h1>ID Requirements</h1>
-<p>A clinical trial requires an identifier that satisifies the following criteria:</p>
+<p>A clinical trial requires an identifier that satisfies the following criteria:</p>
 <ul>
 <li>ID is unique to the trial</li>
 <li>Easy to create and use</li>
-<li>Is machine-readable, without human-interpretable meaning (which is open to interperation and change)</li>
+<li>Is machine-readable, without human interpretable meaning (which is open to interpretation and change)</li>
 <li>Does not change over time (stable, immutable)</li>
 <li>Facilitates links to other online repositories as well as internal and external information about the study.</li>
 <li>Links to human-interpretable identifiers and metadata</li>
@@ -262,7 +261,7 @@ $(document).ready(function () {
 </tr>
 <tr class="odd">
 <td>RepoAuth.org</td>
-<td>Information at a specific repository (eg: clinicalTriials.gov, EudraCT, or others )</td>
+<td>Information at a specific repository (e.g.: clinicalTrials.gov, EudraCT, or others )</td>
 </tr>
 </tbody>
 </table>
@@ -273,7 +272,7 @@ $(document).ready(function () {
 </div>
 <div id="uuid" class="section level2">
 <h2>UUID</h2>
-<p>The UUID is the most critical component because it serves as the unique identifier. It must satisify the aforementioned ID Requirements listed above.</p>
+<p>The UUID is the most critical component because it serves as the unique identifier. It must satisfy the aforementioned ID Requirements listed above.</p>
 <p>We propose three possible methods of constructing the UUID. All methods use the fictional company “PharmaCo.”&quot;</p>
 <div id="method-1-uuid-generators" class="section level3">
 <h3>Method 1 : UUID Generators</h3>
@@ -331,8 +330,8 @@ studyURI</code></pre>
 </ul>
 </div>
 </div>
-<div id="method-2-hash-of-study-title-datetime-stamp" class="section level3">
-<h3>Method 2: Hash of Study Title (+Datetime stamp)</h3>
+<div id="method-2-hash-of-study-title-time-stamp" class="section level3">
+<h3>Method 2: Hash of Study Title (+ time stamp)</h3>
 <p>This method creates an SHA-1 hash for the study title combined with the time stamp for when the hash is created. The time is entered manually for this example but could be captured automatically by the software at the exact time of creation and recorded along with the hash value. This example uses the R package <code>digest</code> to create the hash. Other languages can be used in a similar fashion.</p>
 <p>Example Result</p>
 <p><code>http://PharmaCo.com/clinicaltrial/d7e0929abed16e739e67c0a26a1a036f76b0bc79</code></p>
@@ -340,8 +339,8 @@ studyURI</code></pre>
 <ol style="list-style-type: decimal">
 <li><p>Specify the study title: <code>Safety and Efficacy of the Xanomeline Transdermal Therapeutic System (TTS) in Patients with Mild to Moderate Alzheimer's Disease</code></p></li>
 <li><p>Strip the study title of all spaces to remove potential variability of leading, trailing, and spaces within the title. <code>SafetyandEfficacyoftheXanomelineTransdermalTherapeuticSystem(TTS)inPatientswithMildtoModerateAlzheimer'sDisease&quot;</code></p></li>
-<li><p>Time stamp at creation of the UUID could be captured dynamically at run-time. For this example it is hard-coded in the scipt. <code>2019-02-14T09:30:10</code></p></li>
-<li><p>Contentate the modified study title with the time stamp: <code>SafetyandEfficacyoftheXanomelineTransdermalTherapeuticSystem(TTS)inPatientswithMildtoModerateAlzheimer'sDisease2019-02-14T09:30:10</code></p></li>
+<li><p>Time stamp at creation of the UUID could be captured dynamically at run-time. For this example it is hard-coded in the script. <code>2019-02-14T09:30:10</code></p></li>
+<li><p>Concatenate the modified study title with the time stamp: <code>SafetyandEfficacyoftheXanomelineTransdermalTherapeuticSystem(TTS)inPatientswithMildtoModerateAlzheimer'sDisease2019-02-14T09:30:10</code></p></li>
 <li><p>Create an SHA-1 hash of the title+date: <code>d7e0929abed16e739e67c0a26a1a036f76b0bc79</code></p></li>
 <li><p>Combine the hash value with the <em>Namespace</em> and <em>Resource Type</em>.</p></li>
 </ol>
@@ -371,9 +370,9 @@ UUID &lt;- sha1(protocolTitleDate_nws)
 studyURI &lt;- paste0(&quot;http://&quot;, Namespace, &quot;/&quot;, resourceType, &quot;/&quot;, UUID)
 studyURI</code></pre>
 <p>Pros:<br />
-* Shorter UUID compared to the other metods * Reproducible</p>
+* Shorter UUID compared to the other methods * Reproducible</p>
 <p>Cons:<br />
-* Not decodable back to orginal source</p>
+* Not decodable back to original source</p>
 </div>
 <div id="method-3-base64-encoding-of-study-title-time-stamp" class="section level3">
 <h3>Method 3: base64 Encoding of Study Title (+ time stamp)</h3>
@@ -382,12 +381,12 @@ studyURI</code></pre>
 <p><code>Safety and Efficacy of the Xanomeline Transdermal Therapeutic System (TTS) in Patients with Mild to Moderate Alzheimer's Disease</code></p>
 <ol start="2" style="list-style-type: decimal">
 <li><p>Strip the study title of all spaces to remove potential variability of leading, trailing, and spaces within the title. <code>SafetyandEfficacyoftheXanomelineTransdermalTherapeuticSystem(TTS)inPatientswithMildtoModerateAlzheimer'sDisease</code></p></li>
-<li><p>Time stamp at creation of the UUID could be captured dynamically at run-time. For this example it is hard-coded in the scipt. <code>2019-02-14T09:30:10</code></p></li>
-<li><p>Contentate the modified study title with the time stamp:</p></li>
+<li><p>Time stamp at creation of the UUID could be captured dynamically at run-time. For this example it is hard-coded in the script. <code>2019-02-14T09:30:10</code></p></li>
+<li><p>Concatenate the modified study title with the time stamp:</p></li>
 </ol>
 <p><code>SafetyandEfficacyoftheXanomelineTransdermalTherapeuticSystem(TTS)inPatientswithMildtoModerateAlzheimer'sDisease2019-02-14T09:30:10</code></p>
 <ol start="5" style="list-style-type: decimal">
-<li>Ceate the base64 encoding of the title+time stamp:</li>
+<li>Create the base64 encoding of the title+time stamp:</li>
 </ol>
 <p><code>U2FmZXR5YW5kRWZmaWNhY3lvZnRoZVhhbm9tZWxpbmVUcmFuc2Rlcm1hbFRoZXJhcGV1dGljClN5c3RlbShUVFMpaW5QYXRpZW50c3dpdGhNaWxkdG9Nb2RlcmF0ZUFsemhlaW1lcidzRGlzZWFzZTIwMTktMDItMTRUMDk6MzA6MTA=</code></p>
 <ol start="6" style="list-style-type: decimal">
