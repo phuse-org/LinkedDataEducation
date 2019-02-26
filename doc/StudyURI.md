@@ -61,13 +61,13 @@ A clinical trial requires an identifier that satisifies the following criteria:
 
 The proposed study URI is composed of three components:  A **Namespace**, **Resource Type**, and the **UUID**.
 
-Example: `http://RepoAuthority.org/clinicaltrial#e92971d5421dd4e83ed3e6f6bcc6cf0bd3538d2a`
+Example: `http://RepoAuthority.org/clinicaltrial/e92971d5421dd4e83ed3e6f6bcc6cf0bd3538d2a`
 
 Where:
 
 * `RepoAuthority.org` is the **Namespace**
-* `clinicaltrial#` is the **Resource Type**
-* The string after the `#` is the **UUID** for the study.
+* `clinicaltrial` is the **Resource Type**
+* The string after /clinicaltrial/ is the **UUID** for the study.
 
 *Note how URIs use the http scheme but this does not necessarily mean the data is available on the web! This type of identifier can be used in databases behind company firewalls and do not require http services to make use of the data.* 
 
@@ -94,7 +94,7 @@ We propose three possible methods of constructing the UUID. All methods use the 
 #### 1 a)  Online UUID Generator
 This method relies on an online UUID generator and has no dependency on the study title. Several online UUID generators are available and the one chosen here is for example purposes only. 
 
-Example: `http://PharmaCo.com/clinicaltrial#2fff60b1-4d16-4721-adee-56a8563f5a92`
+Example: `http://PharmaCo.com/clinicaltrial/2fff60b1-4d16-4721-adee-56a8563f5a92`
 
 
 Steps:
@@ -105,7 +105,7 @@ Steps:
 3. Copy the UUID
 `2fff60b1-4d16-4721-adee-56a8563f5a92`
 4. Create the URI by concatenating the *Namespace*, *Resource type*, and *UUID*.
-`http://PharmaCo.com/clinicaltrial#2fff60b1-4d16-4721-adee-56a8563f5a92`
+`http://PharmaCo.com/clinicaltrial/2fff60b1-4d16-4721-adee-56a8563f5a92`
 
 Pros:  
 
@@ -122,7 +122,7 @@ Cons:
 
 This example uses the R package `uuid` to programatically create UUIDs. Other languages can be used in a similar fashion. Code concatenates the generated UUID with a specified *Namespace* and *Resource Type* to create a URI for study. The UUID is different each time the code is run. 
 
-Example: `http://PharmaCo.com/clinicaltrial#3ddf3c44-36b9-11e9-a4c9-c9e469aa18e6`
+Example: `http://PharmaCo.com/clinicaltrial/3ddf3c44-36b9-11e9-a4c9-c9e469aa18e6`
 
 Steps:
 
@@ -143,7 +143,7 @@ resourceType <- 'clinicaltrial'
 UUID <- UUIDgenerate()
 UID
 
-studyURI <- paste0("http://", Namespace, "/", resourceType, "#", UUID)
+studyURI <- paste0("http://", Namespace, "/", resourceType, "/", UUID)
 studyURI
 ```
 
@@ -159,13 +159,13 @@ Cons:
 * Cannot decode value back to original source
 
 
-###Method 2: Hash of Study Title (+Datetime stamp)
+### Method 2: Hash of Study Title (+Datetime stamp)
 
 This method creates an SHA-1 hash for the study title combined with the time stamp for when the hash is created. The time is entered manually for this example but could be captured automatically by the software at the exact time of creation and recorded along with the hash value. This example uses the R package `digest` to create the hash. Other languages can be used in a similar fashion.
 
 Example Result
 
-`http://PharmaCo.com/clinicaltrial#d7e0929abed16e739e67c0a26a1a036f76b0bc79`
+`http://PharmaCo.com/clinicaltrial/d7e0929abed16e739e67c0a26a1a036f76b0bc79`
 
 Steps:
 
@@ -210,7 +210,7 @@ protocolTitleDate_nws <- paste0(protocolTitle_nws, hashTime)
 UUID <- sha1(protocolTitleDate_nws)
 
 # 6
-studyURI <- paste0("http://", Namespace, "/", resourceType, "#", UUID)
+studyURI <- paste0("http://", Namespace, "/", resourceType, "/", UUID)
 studyURI
 ```
 
@@ -276,7 +276,7 @@ protocolTitleDate_nws <- paste0(protocolTitle_nws, uuidTime)
 UUID <- base64(protocolTitleDate_nws)
 
 # 6
-studyURI <- paste0("http://", Namespace, "/", resourceType, "#", UUID)
+studyURI <- paste0("http://", Namespace, "/", resourceType, "/", UUID)
 studyURI
 
 # 7 

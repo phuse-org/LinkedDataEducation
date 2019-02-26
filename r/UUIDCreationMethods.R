@@ -7,7 +7,7 @@ resourceType <- 'clinicaltrial'
 UUID <- UUIDgenerate()
 UID
 
-studyURI <- paste0("http://", Namespace, "/", resourceType, "#", UUID)
+studyURI <- paste0("http://", Namespace, "/", resourceType, "/", UUID)
 studyURI
 
 
@@ -33,7 +33,7 @@ protocolTitleDate_nws <- paste0(protocolTitle_nws, uuidTime)
 UUID <- sha1(protocolTitleDate_nws)
 
 # 6
-studyURI <- paste0("http://", Namespace, "/", resourceType, "#", UUID)
+studyURI <- paste0("http://", Namespace, "/", resourceType, "/", UUID)
 studyURI
 
 # base64 Method
@@ -60,7 +60,7 @@ protocolTitleDate_nws <- paste0(protocolTitle_nws, uuidTime)
 UUID <- base64(protocolTitleDate_nws)
 
 # 6
-studyURI <- paste0("http://", Namespace, "/", resourceType, "#", UUID)
+studyURI <- paste0("http://", Namespace, "/", resourceType, "/", UUID)
 studyURI
 
 # 7 
