@@ -22,6 +22,7 @@ Searching for information about clinical trials on the the web is now commonplac
 
 ---------  WORK IN PROGRESS ----------------
 
+[UUID Creation: Technical Details](./UUIDTechDetails.md)
 
 This proposal addresses the multiple challenges surrounding clinical trial identifiers, including:
 
