@@ -1,8 +1,14 @@
-# UUID Creation Methods
+# UUID Creation Methods <a name="top"></a>
 This page outlines four possible methods for creating the UUID portion of the Study URI, with pros and cons for each.
+Any of the methods can be used independently to generate an unique identifier. R code in the examples can be substituted with other languages where appropriate.
+
+1. [Online UUID](#OnlineUUID)
+2. [Programmatic UUID](#ProgrammaticUUID)
+3. [Hash Study Title](#HashStudyTitle)
+4. [Encode Study Title](#EncodeStudyTitle)
 
 
-## Method 1  Online UUID Generator
+## Method 1:  <a name="OnlineUUID"></a>Online UUID Generator
 This method relies on an online UUID generator and has no dependency on the study title. Several online UUID generators are available and the one chosen here is for example purposes only. 
 
 Example: `http://PharmaCo.com/clinicaltrial/2fff60b1-4d16-4721-adee-56a8563f5a92`
@@ -29,7 +35,9 @@ Cons:
 * Does not scale. This manual method is more labor-intensive than programmatic methods
 * Susceptible to copy-paste errors.
 
-## Method 2 Programmatic UUID Generator
+[Back to top](#top)
+
+## Method 2: <a name="ProgrammaticUUID"></a>Programmatic UUID Generator
 
 This example uses the R package `uuid` to programatically create UUIDs. Other languages can be used in a similar fashion. Code concatenates the generated UUID with a specified *Namespace* and *Resource Type* to create a URI for study. The UUID is different each time the code is run. 
 
@@ -69,8 +77,9 @@ Cons:
 * Not reproducible: A new UUID is generated each time the script is run.
 * Cannot decode value back to original source
 
+[Back to top](#top)
 
-## Method 3: Hash of Study Title (+ time stamp)
+## Method 3: <a name="HashStudyTitle"></a>Hash of Study Title (+ time stamp)
 
 This method creates an SHA-1 hash for the study title combined with the time stamp for when the hash is created. The time is entered manually for this example but could be captured automatically by the software at the exact time of creation and recorded along with the hash value. This example uses the R package `digest` to create the hash. Other languages can be used in a similar fashion.
 
@@ -132,8 +141,9 @@ Pros:
 Cons:  
 * Not decodable back to original source
 
+[Back to top](#top)
 
-## Method 4: base64 Encoding of Study Title (+ time stamp) 
+## Method 4: <a name="EncodeStudyTitle"></a>base64 Encoding of Study Title (+ time stamp) 
 This method creates the UUID using base64 encoding the study title combined with the time stamp for when the encoding is created. The time is entered manually for this example but could be captured automatically by the software at the exact time of creation and recorded along with the hash value. The example uses the R package `RCurl` to create the hash. Other languages can be used in a similar fashion.
 
 Steps:
@@ -204,6 +214,8 @@ Pros:
 Cons:  
 
 * Long UUID
+
+[Back to top](#top)
 
 
 Return to [Study URI page](./StudyURI.md)

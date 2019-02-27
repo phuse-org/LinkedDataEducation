@@ -1,3 +1,6 @@
+
+---- ***Update 2019-02-26: Pages undergoing significant restructure and re-write*** ---
+
 # Prologue
 This is a working draft proposal for creation, management, and use of Uniform Resource
 Identifiers (URIs) for clinical trial identification. The work was inspired by the
