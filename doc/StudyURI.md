@@ -57,7 +57,7 @@ Any solution must address the multiple challenges surrounding clinical trial ide
 * Available prior to submission of protocols while ensuring uniqueness in the absence of a central authority.
 
 
-##URIs
+## URIs
 
 A "Uniform Resource Identifier (URI) is a string of characters that unambiguously identifies a particular resource" [[Wikipedia]](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier), where a "resource" is any entity or thing you wish to describe or identify (including clinical studies!) URIs follow a set of rules to maintain their uniformity.
 They look a lot like the familiar Uniform Resource Locator (URL) because they use either http or https as their protocol. In fact, URI is a broader term that includes both URLs and Uniform Resource Names (URNs), but this is more detail than is necessary for the discussion here. For more on this topic see [W3C Note 21](https://www.w3.org/TR/uri-clarification/).
