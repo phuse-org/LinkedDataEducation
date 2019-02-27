@@ -7,7 +7,7 @@ resourceType <- 'clinicaltrial'
 UUID <- UUIDgenerate()
 UID
 
-studyURI <- paste0("http://", Namespace, "/", resourceType, "/", UUID)
+studyURI <- paste0("https://", Namespace, "/", resourceType, "/", UUID)
 studyURI
 
 
@@ -30,10 +30,10 @@ uuidTime <- '2019-02-14T09:30:10'
 # 4
 protocolTitleDate_nws <- paste0(protocolTitle_nws, uuidTime)
 # 5
-UUID <- sha1(protocolTitleDate_nws)
+hashID <- sha1(protocolTitleDate_nws)
 
 # 6
-studyURI <- paste0("http://", Namespace, "/", resourceType, "/", UUID)
+studyURI <- paste0("https://", Namespace, "/", resourceType, "/", hashID)
 studyURI
 
 # base64 Method
@@ -51,18 +51,18 @@ protocolTitle <-"Safety and Efficacy of the Xanomeline Transdermal Therapeutic
 protocolTitle_nws <- gsub(" ","", protocolTitle)
 
 # 3
-uuidTime <- '2019-02-14T09:30:10'
+idTime <- '2019-02-14T09:30:10'
 
 #4 
-protocolTitleDate_nws <- paste0(protocolTitle_nws, uuidTime)
+protocolTitleDate_nws <- paste0(protocolTitle_nws, idTime)
 
 # 5 
-UUID <- base64(protocolTitleDate_nws)
+encodedID <- base64(protocolTitleDate_nws)
 
 # 6
-studyURI <- paste0("http://", Namespace, "/", resourceType, "/", UUID)
+studyURI <- paste0("https://", Namespace, "/", resourceType, "/", encodedID)
 studyURI
 
 # 7 
-decoded_UUID <- base64Decode(UUID)
-decoded_UUID
+decoded_ID <- base64Decode(encodedID)
+decoded_ID
