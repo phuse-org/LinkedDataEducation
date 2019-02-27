@@ -17,7 +17,8 @@ Historically, development of identifiers was driven by the need to identify tria
 
 The use case for identifiers has progressed beyond the need for locating information within a company or repository. Web-based identifiers (URIs) can provide the required unique identifier while also facilitating links between repositories (both public and private) and also serving as a mechanism to surface information about that resource. This multiple  functionality greatly enhances the utility of identifiers that use this approach.
 
-![](images/studyURIScope_75p.png)
+![](images/StudyURIScope_75p.png)
+
 
 **Figure 1:** Use of Study URI to join information across disparate sources.
 
@@ -76,7 +77,7 @@ The proposed Study URI is composed of four components: *Protocol*, **HostName**,
 
 ![](images/URIComponents.png)
 
-**Figure 2: Study URI structure.
+**Figure 2:** Study URI structure.
 
 
 ### 1. Protocol
