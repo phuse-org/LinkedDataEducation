@@ -105,6 +105,14 @@ We recommend the use of *clinicaltrial* for the resource type for clear identifi
 The Unique ID is a critical component because it serves as the unique identifier. It must satisfy the aforementioned ID Requirements listed in this document.  [Unique ID Creation: Technical Details](./UUIDTechDetails.md) provides the technical details necessary for creating a Unique ID using one of four possible methods. Examples on this page make use of the ID value created as a UUID generated using Method 1 or Method 2. 
 
 
+### Alternative for Discussion 2019-03-27
+
+Wikidata Q Number
+
+[https://www.wikidata.org/wiki/Q4654994]https://www.wikidata.org/wiki/Q4654994
+
+
+
 ## Implications of the URI structure
 Following the prescribed  syntax of the Study URI means that the Unique Identifier can remain stable over time while the other components may change (Protocol, Hostname, Resource) based on context or change in meaning.
 
