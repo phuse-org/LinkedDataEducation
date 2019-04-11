@@ -14,4 +14,4 @@ For a comprehensive list of Linked Data resources, see [Awesome Semantic Web](ht
 
 Other Work:
 
-[Study URI](./doc/StudyURI.md)
+[URIs for Pharma](./doc/URIsForPharma.md)
