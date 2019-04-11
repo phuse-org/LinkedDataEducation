@@ -1,5 +1,5 @@
 
---- ***NOTE: DRAFT under heavy revision  2019-02-27*** ---
+--- ***NOTE: DRAFT under heavy revision *** ---
 
 # Prologue
 This is a working draft proposal for creation, management, and use of Uniform Resource
