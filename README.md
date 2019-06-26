@@ -12,6 +12,3 @@ For a comprehensive list of Linked Data resources, see [Awesome Semantic Web](ht
 | [Linked Data](https://www.manning.com/books/linked-data) | Online version of the book. Good introduction to Linked Data Concepts |
 | [RDF 1.1 Primer](https://www.w3.org/TR/rdf11-primer/) | RDF basics from the W3C|
 
-Other Work:
-
-[URIs for Pharma](./doc/URIsForPharma.md)
